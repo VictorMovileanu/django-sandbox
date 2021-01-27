@@ -5,3 +5,5 @@ services:
   web:
     volumes:
       - ./src:/usr/src/app
+    env_file:
+      - ./.env.dev
