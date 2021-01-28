@@ -7,3 +7,4 @@ services:
       - ./src:/usr/src/app
     env_file:
       - ./.env.dev
+    command: gunicorn sandbox.wsgi:application --bind 0.0.0.0:8000

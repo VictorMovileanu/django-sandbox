@@ -8,6 +8,8 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    volumes:
+      - sandbox_database:/var/lib/postgresql/data/
 
   web:
     build: .
@@ -16,3 +18,18 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    volumes:
+      - sandbox_statics:/usr/src/staticfiles
+
+  ngnix:
+    build: ./nginx
+    ports:
+      - 1337:80
+    volumes:
+      - sandbox_statics:/usr/src/staticfiles
+    depends_on:
+      - web
+
+volumes:
+  sandbox_database:
+  sandbox_statics:
