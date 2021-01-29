@@ -33,9 +33,14 @@ RUN chown -R $USER:$GROUP .
 
 # create directory for statics
 RUN mkdir /usr/src/staticfiles
+
+# collect static files
+RUN python manage.py collectstatic --noinput
+
+# change permissions to static files
 RUN chown -R $USER:$GROUP /usr/src/staticfiles
 
 # change to the app user
 USER $USER
 
-ENTRYPOINT ["/usr/src/entrypoint.sh"]
+CMD gunicorn sandbox.wsgi:application --bind 0.0.0.0:8000

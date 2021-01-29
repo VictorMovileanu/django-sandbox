@@ -20,6 +20,9 @@ services:
       - db
     volumes:
       - sandbox_statics:/usr/src/staticfiles
+      - ./src:/usr/src/app
+    env_file:
+      - ./.env.dev
 
   ngnix:
     build: ./nginx
