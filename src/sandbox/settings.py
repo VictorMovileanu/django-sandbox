@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="FOO")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get("DEBUG", default=0))
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'murmuring-hamlet-07301.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'murmuring-hamlet-07301.herokuapp.com']
 
 
 # Application definition
@@ -86,7 +86,7 @@ DATABASES = {
 }
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
-db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=500, ssl_require=True)
+db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=500, ssl_require=not DEBUG)
 DATABASES['default'].update(db_from_env)
 
 # Password validation
