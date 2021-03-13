@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from apps.my_first_app.models import Child, Parent
+from projects.my_first_app.models import Child, Parent
 
 
 class MultiTableInheritanceTests(TestCase):
