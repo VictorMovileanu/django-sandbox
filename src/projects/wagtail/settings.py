@@ -15,6 +15,7 @@ INSTALLED_APPS += [
 
     'modelcluster',
     'taggit',
+    'projects.wagtail.apps.WagtailSandboxConfig'
 ]
 
 MIDDLEWARE += [
